@@ -8,8 +8,10 @@ This plugin adds a check `onRouteUpdate` - which looks for hashes in the current
 
 ## Installation
 
-Using Yarn
-`yarn add gatsby-plugin-anchor-links`
+Using Yarn -
 
-Using NPM
-`npm i gatsby-plugin-anchor-links`
+- `yarn add gatsby-plugin-anchor-links`
+
+Using NPM -
+
+- `npm i gatsby-plugin-anchor-links`
