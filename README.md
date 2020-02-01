@@ -45,6 +45,28 @@ module.exports = {
 | ------ | -------------------: | ------: | -----: |
 | offset | # of pixels from top |       0 | number |
 
+## Component Usage
+
+You can provide anchor or non-anchor links to this component for ease of use. If you use it as an anchor component, be sure to include both a base path and hash in the `to` string.
+
+```
+import { AnchorLink } from 'gatsby-plugin-anchor-link';
+
+export default () => (
+    <AnchorLink to='/about#team' title="Our team" >
+        <span>Check out our team!</span>
+    </AnchorLink>
+)
+```
+
+### AnchorLink props
+
+| Option   |                             Description |       Type | Required |
+| -------- | --------------------------------------: | ---------: | -------: |
+| to       |    path with hash to your page & anchor |     string |     true |
+| title    | accessible title & fallback anchor text |     string |    false |
+| children |  react node to be wrapped by AnchorLink | react node |    false |
+
 ## Credits
 
 - Anchor logo by dData via [Noun Project](https://thenounproject.com/dDara)
