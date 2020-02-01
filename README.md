@@ -62,6 +62,10 @@ export default () => (
     <AnchorLink to='/about#team' title="Check out our team!" />
 )
 
+export default () => (
+    <AnchorLink to='/about' title="About us" />
+)
+
 ```
 
 ### AnchorLink props
