@@ -1,5 +1,5 @@
-import { checkHash } from "./src/utils/helpers";
+import { checkHash } from "./utils";
 
-export const onRouteUpdate = ({ location }) => {
-  checkHash(location);
+export const onRouteUpdate = ({ location }, { offset = 0 }) => {
+  checkHash(location, offset);
 };
