@@ -1,1 +1,1 @@
-![Banner](/static/gatsby-anchor-link.jpg "Banner")
+![Banner](/static/banner.svg "Banner")
