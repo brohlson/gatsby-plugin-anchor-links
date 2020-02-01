@@ -1,4 +1,4 @@
-![Banner](/static/gatsby-anchor-link.svg "Banner")
+![Banner](https://i.imgur.com/H572MIB.jpg "Banner")
 
 # Gatsby Anchor Links
 
