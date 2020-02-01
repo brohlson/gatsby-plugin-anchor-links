@@ -50,7 +50,7 @@ module.exports = {
 You can provide anchor or non-anchor links to this component for ease of use. If you use it as an anchor component, be sure to include both a base path and hash in the `to` string.
 
 ```
-import { AnchorLink } from 'gatsby-plugin-anchor-link';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
 export default () => (
     <AnchorLink to='/about#team' title="Our team" >
