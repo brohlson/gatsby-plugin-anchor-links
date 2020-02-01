@@ -1,5 +1,4 @@
 ![Banner](/static/banner.svg "Banner")
-Anchor logo by dData via [Noun Project](https://thenounproject.com/dDara)
 
 # Gatsby Anchor Links
 
@@ -16,3 +15,7 @@ Using Yarn -
 Using NPM -
 
 - `npm i gatsby-plugin-anchor-links`
+
+## Credits
+
+- Anchor logo by dData via [Noun Project](https://thenounproject.com/dDara)
