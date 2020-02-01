@@ -4,6 +4,7 @@
   "main": "index.js",
   "author": "Chase Ohlson <chase@chaseohlson.com>",
   "description": "Gatsby plugin for using anchor links with a Gatsby Link component.",
+  "homepage": "https://github.com/brohlson/gatsby-plugin-anchor-links",
   "license": "MIT",
   "scripts": {
     "build": "babel src/ --out-dir . --ignore __tests__",

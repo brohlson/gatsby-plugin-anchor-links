@@ -41,9 +41,9 @@ module.exports = {
 
 ### Configuration Options
 
-| Option |          Description | Default | Required |
-| ------ | -------------------: | ------: | -------: |
-| offset | # of pixels from top |       0 |    false |
+| Option |          Description | Default |   Type |
+| ------ | -------------------: | ------: | -----: |
+| offset | # of pixels from top |       0 | number |
 
 ## Credits
 
