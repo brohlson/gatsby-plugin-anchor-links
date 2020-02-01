@@ -1,4 +1,5 @@
 ![Banner](/static/banner.svg "Banner")
+Anchor logo by dData via [Noun Project](https://thenounproject.com/dDara)
 
 # Gatsby Anchor Links
 
