@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-anchor-links",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "index.js",
   "author": "Chase Ohlson <chase@chaseohlson.com>",
   "description": "Gatsby plugin for using anchor links with a Gatsby Link component.",
