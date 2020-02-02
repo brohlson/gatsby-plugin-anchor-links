@@ -2,9 +2,11 @@
 
 # Gatsby Anchor Links
 
-## What does this do?
+## Why? What does this do?
 
-This plugin adds a check `onRouteUpdate` - which looks for hashes in the current pathname. If so, it uses a scrolling library to scroll to the provided hash. In addition, it provides component(s) for use in your Gatsby code.
+Many sites use a mixed navigation format in which some links route to other pages, while some anchor a scroll to sections within a specific page -- but both types still need to function well regardless of what page the user is currently on. This can be a little cumbersome to accomplish elegantly. This plugin aims to provide that.
+
+This plugin adds a check `onRouteUpdate` - which looks for hashes in the current pathname. If so, it uses a scrolling library to scroll to the provided hash. In addition, it provides component(s) for use in your Gatsby code to which you can provide both hashed & non-hashed `to` paths.
 
 ## Installation
 
@@ -31,9 +33,9 @@ module.exports = {
     plugins: [
         {
         resolve: 'gatsby-plugin-anchor-links',
-        options: {
-            offset: -100,
-        },
+            options: {
+                offset: -100,
+            },
         },
     ]
 }
