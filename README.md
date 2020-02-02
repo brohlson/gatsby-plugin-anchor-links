@@ -45,7 +45,7 @@ module.exports = {
 | ------ | -------------------: | ------: | -----: |
 | offset | # of pixels from top |       0 | number |
 
-## Component Usage
+## Component usage
 
 You can provide anchor or non-anchor links to this component for ease of use. If you use it as an anchor component, be sure to include both a base path and hash in the `to` string.
 
