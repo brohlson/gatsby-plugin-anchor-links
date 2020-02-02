@@ -11,7 +11,7 @@ export function handleMenuLinkClick(to, e) {
     const [anchorPath, anchor] = to.split("#");
     if (window.location.pathname === anchorPath) {
       e.preventDefault();
-      scroller(`#${anchor}`, -80);
+      scroller(`#${anchor}`, window.gatsby_scroll_offset);
     }
   }
 }
