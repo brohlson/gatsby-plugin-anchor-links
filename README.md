@@ -76,6 +76,10 @@ export default () => (
 | title    | accessible title & fallback anchor text |     string |    false |
 | children |  react node to be wrapped by AnchorLink | react node |    false |
 
+## Site's using gatsby-anchor-link
+
+- [chaseohlson.com](https://chaseohlson.com/) // [Source](https://github.com/brohlson/chaseohlson)
+
 ## Credits
 
 - Anchor logo by dData via [Noun Project](https://thenounproject.com/dDara)
