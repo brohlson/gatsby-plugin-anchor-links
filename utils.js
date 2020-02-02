@@ -21,7 +21,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function scroller(target) {
   var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  console.log("SCROLLER", target, offset);
   (0, _scrollToElement["default"])(target, {
     offset: offset
   });
