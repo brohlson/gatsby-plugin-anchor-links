@@ -3,4 +3,5 @@
 /src
 /.babelrc
 /.eslintrc
+/.github
 /yarn.lock

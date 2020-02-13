@@ -66,17 +66,36 @@ export default () => (
 );
 // => <a href="/about#team" title="Check out our team!">Check out our team!</a>
 
+export default () => (
+  <AnchorLink
+    to="/about#team"
+    title="Check out our team!"
+    className="stripped"
+    stripHash
+  />
+);
+// => <a href="/about" class="stripped" title="Check out our team!">Check out our team!</a>
+// => Hash will be stripped, and a full page scroll will occure onRouteChange
+
 export default () => <AnchorLink to="/about" title="About us" />;
 // => <a href="/about" title="About us">About us</a>
 ```
 
 ### AnchorLink props
 
-| Option   |                             Description |       Type | Required |
-| -------- | --------------------------------------: | ---------: | -------: |
-| to       |    path with hash to your page & anchor |     string |     true |
-| title    | accessible title & fallback anchor text |     string |    false |
-| children |  react node to be wrapped by AnchorLink | react node |    false |
+| Option    |                                                          Description |       Type | Required |
+| --------- | -------------------------------------------------------------------: | ---------: | -------: |
+| to        |                                 path with hash to your page & anchor |     string |     true |
+| title     |                              accessible title & fallback anchor text |     string |    false |
+| className |                      className to be passed to gatsby-link component |     string |    false |
+| stripHash | strips hash from link - forces a full scroll to target onRouteChange |    boolean |    false |
+| children  |                               react node to be wrapped by AnchorLink | react node |    false |
+
+#### A note on `stripHash`
+
+When passing a hashed `to` prop to the link component - browsers will automatically try to get you there when the route changes. If you have some offset value, you'll see some scrolling action. If you don't, you'll just see a static route change directly to the hash.
+
+The `stripHash` prop will route to the base path of your `to` prop, save the hash on the `window`, then navigate to it. As far as semantic HTML & Google SERP nav links concerned, this probably isn't exactly 100% kosher in every sitation, but it achieves the desired effect for many that are looking for this kind of solution. So, take this with a grain of salt.
 
 ## Sites using Gatsby Anchor Links
 
