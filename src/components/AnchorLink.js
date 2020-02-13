@@ -1,22 +1,32 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import { handleMenuLinkClick } from "../utils";
+import {
+  handleLinkClick,
+  stripHashedLocation,
+  handleStrippedLinkClick
+} from "../utils";
 import { anchorLinkTypes } from "../types";
-import * as errorTypes from "../errors";
 
-export function AnchorLink({ to, title, children }) {
-  /**
-   * Check props are valid
-   */
-  const improperFormatting = !to.includes("/") || !to.includes("#");
-  if (improperFormatting) console.warn(errorTypes.IMPROPPER_FORMATTING);
-
+export function AnchorLink({
+  to,
+  title,
+  children,
+  className,
+  stripHash = false
+}) {
   const linkProps = {
-    to,
-    title,
-    onClick: e => handleMenuLinkClick(to, e)
+    to: stripHash ? stripHashedLocation(to) : to,
+    onClick: e =>
+      stripHash ? handleStrippedLinkClick(to, e) : handleLinkClick(to, e)
   };
+
+  /**
+   * Optional props
+   */
+  if (title) linkProps.title = title;
+  if (className) linkProps.className = className;
+
   return <Link {...linkProps}>{Boolean(children) ? children : title}</Link>;
 }
 
