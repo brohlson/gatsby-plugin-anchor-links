@@ -60,6 +60,10 @@ export function stripHashedLocation(to) {
 }
 
 export function checkHash(location, offset) {
-  const { hash } = location;
-  if (hash) scroller(hash, offset);
+  const { hash } = location,
+    selector = hash ? hash.substr(1) : null,
+    validElement = selector ? document.getElementById(selector) : null;
+  if (hash && Boolean(validElement)) scroller(hash, offset);
+  else if (hash && selector && !validElement)
+    console.warn(errorTypes.INVALID_HASH);
 }
