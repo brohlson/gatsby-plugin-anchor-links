@@ -13,7 +13,8 @@ export function AnchorLink({
   title,
   children,
   className,
-  stripHash = false
+  stripHash = false,
+  ...additionalLinkProps
 }) {
   const linkProps = {
     to: stripHash ? stripHashedLocation(to) : to,
@@ -27,7 +28,7 @@ export function AnchorLink({
   if (title) linkProps.title = title;
   if (className) linkProps.className = className;
 
-  return <Link {...linkProps}>{Boolean(children) ? children : title}</Link>;
+  return <Link {...linkProps, ...additionalLinkProps}>{Boolean(children) ? children : title}</Link>;
 }
 
 AnchorLink.propTypes = anchorLinkTypes;
