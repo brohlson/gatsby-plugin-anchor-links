@@ -1,4 +1,3 @@
-const { createProxyMiddleware } = require('http-proxy-middleware');
 const siteConfig = require('./config/site-config');
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -13,40 +12,15 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-plugin-anchor-links',
+      resolve: require.resolve('../'),
       options: {
-        offset: -90,
+        offset: -60,
       },
     },
     {
       resolve: 'gatsby-plugin-styled-components',
       options: {
         displayName: process.env.NODE_ENV !== 'production',
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-sitemap',
-      options: {
-        output: siteConfig.sitemapPath,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-canonical-urls',
-      options: {
-        siteUrl: siteConfig.siteUrl,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        host: siteConfig.siteUrl,
-        sitemap: `${siteConfig.siteUrl}${siteConfig.sitemapPath}`,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: process.env.GA_ID,
       },
     },
     {
@@ -74,22 +48,5 @@ module.exports = {
         icon: 'src/images/icon.png',
       },
     },
-    {
-      resolve: 'gatsby-source-datocms',
-      options: {
-        apiToken: process.env.DATO_CMS_KEY,
-      },
-    },
   ],
-  developMiddleware: app => {
-    app.use(
-      '/.netlify/functions/',
-      createProxyMiddleware({
-        target: 'http://localhost:9000',
-        pathRewrite: {
-          '/.netlify/functions/': '',
-        },
-      })
-    );
-  },
 };

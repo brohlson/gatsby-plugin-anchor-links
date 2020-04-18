@@ -29,6 +29,7 @@ export const colors = {
   dark: '#222',
   light: '#fafafa',
   purple: '#9135AD',
+  red: '#FF0000',
 };
 
 export const z = {
