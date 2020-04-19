@@ -6,3 +6,4 @@
 /.eslintrc
 /.github
 /yarn.lock
+/.netlify

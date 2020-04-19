@@ -50,7 +50,9 @@
     "build": "gatsby build",
     "build:client": "gatsby build",
     "format": "prettier --config ./.prettierrc --write src/**/**/*.js && prettier --config ./.prettierrc --write src/**/*.js",
-    "clean": "rm -rf ./node_modules && rm -rf ./.cache && yarn cache clean && yarn"
+    "clean": "rm -rf ./node_modules && rm -rf ./.cache && yarn cache clean && yarn",
+    "deploy:draft": "yarn build && netlify deploy --dir=public",
+    "deploy:prod": "yarn build && netlify deploy --dir=public --prod"
   },
   "husky": {
     "hooks": {
