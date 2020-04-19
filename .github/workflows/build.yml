@@ -16,9 +16,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install, build
+      - name: install, build plugin, build site
         run: |
           yarn
+          yarn build
+          cd example
           yarn build
         env:
           CI: true
