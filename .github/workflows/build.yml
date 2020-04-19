@@ -21,6 +21,7 @@ jobs:
           yarn
           yarn build
           cd example
+          yarn
           yarn build
         env:
           CI: true
