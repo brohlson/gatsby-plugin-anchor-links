@@ -1,11 +1,11 @@
-import * as React from 'react'
+import * as React from "react";
 
 export interface AnchorLinkProps {
-    to: string
-    title?: string
-    className?: string
-    stripHash?: boolean
-    children?: React.ReactNode
+  to: string;
+  title?: string;
+  className?: string;
+  stripHash?: boolean;
+  children?: React.ReactNode;
 }
 
-export function AnchorLink(props: AnchorLinkProps): any
+export function AnchorLink(props: AnchorLinkProps): any;
