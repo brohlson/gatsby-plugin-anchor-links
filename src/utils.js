@@ -11,7 +11,7 @@ export function scroller(target, offset = 0) {
   });
 }
 
-export function handleLinkClick(to, e) {
+export function handleLinkClick(to, e, options) {
   /**
    * Log warnings on click
    */
@@ -23,12 +23,12 @@ export function handleLinkClick(to, e) {
     const [anchorPath, anchor] = to.split("#");
     if (window.location.pathname === anchorPath) {
       e.preventDefault();
-      scroller(`#${anchor}`, window.gatsby_scroll_offset);
+      scroller(`#${anchor}`, getOffset(options));
     }
   }
 }
 
-export function handleStrippedLinkClick(to, e) {
+export function handleStrippedLinkClick(to, e, options) {
   /**
    * Log warnings on click
    */
@@ -47,12 +47,16 @@ export function handleStrippedLinkClick(to, e) {
 
   if (isSamePage) {
     e.preventDefault();
-    return scroller(`#${anchor}`, window.gatsby_scroll_offset);
+    return scroller(`#${anchor}`, getOffset(options));
   }
 
   if (isDifferentPage) {
     window.gatsby_scroll_hash = `#${anchor}`;
   }
+}
+
+function getOffset({ offset } = {}) {
+  return offset != null ? offset : window.gatsby_scroll_offset;
 }
 
 export function stripHashedLocation(to) {
