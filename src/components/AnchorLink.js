@@ -13,12 +13,15 @@ export function AnchorLink({
   title,
   children,
   className,
-  stripHash = false
+  stripHash = false,
+  options
 }) {
   const linkProps = {
     to: stripHash ? stripHashedLocation(to) : to,
     onClick: e =>
-      stripHash ? handleStrippedLinkClick(to, e) : handleLinkClick(to, e)
+      stripHash
+        ? handleStrippedLinkClick(to, e, options)
+        : handleLinkClick(to, e, options)
   };
 
   /**
