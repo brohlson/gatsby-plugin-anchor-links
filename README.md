@@ -46,6 +46,7 @@ module.exports = {
 | Option |          Description | Default |   Type |
 | ------ | -------------------: | ------: | -----: |
 | offset | # of pixels from top |       0 | number |
+| duration | duration of scroll in milliseconds |       1000 | number |
 
 ## Component usage
 
@@ -89,6 +90,8 @@ export default () => <AnchorLink to="/about" title="About us" />;
 | title     |                              accessible title & fallback anchor text |     string |    false |
 | className |                      className to be passed to gatsby-link component |     string |    false |
 | stripHash | strips hash from link - forces a full scroll to target onRouteChange |    boolean |    false |
+| gatsbyLinkProps | a passthrough object which is spread into Link props           |    object  |    false |
+| onAnchorLinkClick | a function to be called when the anchor link handler is fired         |    function  |    false |
 | children  |                               react node to be wrapped by AnchorLink | react node |    false |
 
 #### A note on `stripHash`
