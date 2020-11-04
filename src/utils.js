@@ -1,4 +1,5 @@
 import scrollToElement from "scroll-to-element";
+import { withPrefix } from "gatsby";
 import * as errorTypes from "./errors";
 
 export const isBrowser = typeof window !== "undefined";
@@ -12,7 +13,7 @@ export function scroller(target, offset = 0, duration = 1000) {
   });
 }
 
-export function handleLinkClick(to, e) {
+export function handleLinkClick(to, e, onAnchorLinkClick) {
   /**
    * Log warnings on click
    */
@@ -22,14 +23,16 @@ export function handleLinkClick(to, e) {
 
   if (isBrowser && to.includes("#")) {
     const [anchorPath, anchor] = to.split("#");
-    if (window.location.pathname === anchorPath) {
+    if (window.location.pathname === withPrefix(anchorPath)) {
       e.preventDefault();
       scroller(`#${anchor}`, window.gatsby_scroll_offset, window.gatsby_scroll_duration);
     }
   }
+
+  if (onAnchorLinkClick) onAnchorLinkClick()
 }
 
-export function handleStrippedLinkClick(to, e) {
+export function handleStrippedLinkClick(to, e, onAnchorLinkClick) {
   /**
    * Log warnings on click
    */
@@ -54,6 +57,8 @@ export function handleStrippedLinkClick(to, e) {
   if (isDifferentPage) {
     window.gatsby_scroll_hash = `#${anchor}`;
   }
+
+  if (onAnchorLinkClick) onAnchorLinkClick();
 }
 
 export function stripHashedLocation(to) {
