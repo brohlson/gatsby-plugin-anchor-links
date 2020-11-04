@@ -14,16 +14,17 @@ export function AnchorLink({
   children,
   className,
   stripHash = false,
-  gatsbyLinkProps = {}
+  gatsbyLinkProps = {},
+  onAnchorLinkClick
 }) {
+  const onClickHandler = stripHash ? handleStrippedLinkClick : handleLinkClick;
   const linkProps = {
     ...gatsbyLinkProps,
     /**
      * Spread optional gatsbyLinkProps object in fist, so our specific props will override
      */
     to: stripHash ? stripHashedLocation(to) : to,
-    onClick: e =>
-      stripHash ? handleStrippedLinkClick(to, e) : handleLinkClick(to, e)
+    onClick: e => onClickHandler(to, e, onAnchorLinkClick)
   };
 
   /**

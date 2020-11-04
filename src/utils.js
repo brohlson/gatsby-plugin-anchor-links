@@ -11,7 +11,7 @@ export function scroller(target, offset = 0) {
   });
 }
 
-export function handleLinkClick(to, e) {
+export function handleLinkClick(to, e, onAnchorLinkClick) {
   /**
    * Log warnings on click
    */
@@ -26,9 +26,11 @@ export function handleLinkClick(to, e) {
       scroller(`#${anchor}`, window.gatsby_scroll_offset);
     }
   }
+
+  if (onAnchorLinkClick) onAnchorLinkClick()
 }
 
-export function handleStrippedLinkClick(to, e) {
+export function handleStrippedLinkClick(to, e, onAnchorLinkClick) {
   /**
    * Log warnings on click
    */
@@ -53,6 +55,8 @@ export function handleStrippedLinkClick(to, e) {
   if (isDifferentPage) {
     window.gatsby_scroll_hash = `#${anchor}`;
   }
+
+  if (onAnchorLinkClick) onAnchorLinkClick();
 }
 
 export function stripHashedLocation(to) {
