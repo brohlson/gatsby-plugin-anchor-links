@@ -1,4 +1,5 @@
 import scrollToElement from "scroll-to-element";
+import { withPrefix } from "gatsby";
 import * as errorTypes from "./errors";
 
 export const isBrowser = typeof window !== "undefined";
@@ -7,7 +8,7 @@ export const isDevelopment = process.env.NODE_ENV !== "production";
 
 export function scroller(target, offset = 0) {
   scrollToElement(target, {
-    offset
+    offset,
   });
 }
 
@@ -21,7 +22,7 @@ export function handleLinkClick(to, e, onAnchorLinkClick) {
 
   if (isBrowser && to.includes("#")) {
     const [anchorPath, anchor] = to.split("#");
-    if (window.location.pathname === anchorPath) {
+    if (window.location.pathname === withPrefix(anchorPath)) {
       e.preventDefault();
       scroller(`#${anchor}`, window.gatsby_scroll_offset);
     }
