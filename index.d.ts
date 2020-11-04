@@ -6,6 +6,7 @@ export interface AnchorLinkProps {
     className?: string
     stripHash?: boolean
     children?: React.ReactNode
+    gatsbyLinkProps?: object
 }
 
 export function AnchorLink(props: AnchorLinkProps): any

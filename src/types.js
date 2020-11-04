@@ -5,5 +5,6 @@ export const anchorLinkTypes = {
   title: PropTypes.string,
   className: PropTypes.string,
   stripHash: PropTypes.bool,
-  children: PropTypes.node
+  gatsbyLinkProps: PropTypes.object,
+  children: PropTypes.node,
 };
