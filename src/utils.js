@@ -6,9 +6,10 @@ export const isBrowser = typeof window !== "undefined";
 
 export const isDevelopment = process.env.NODE_ENV !== "production";
 
-export function scroller(target, offset = 0) {
+export function scroller(target, offset = 0, duration = 1000) {
   scrollToElement(target, {
-    offset,
+    duration,
+    offset
   });
 }
 
@@ -24,7 +25,7 @@ export function handleLinkClick(to, e, onAnchorLinkClick) {
     const [anchorPath, anchor] = to.split("#");
     if (window.location.pathname === withPrefix(anchorPath)) {
       e.preventDefault();
-      scroller(`#${anchor}`, window.gatsby_scroll_offset);
+      scroller(`#${anchor}`, window.gatsby_scroll_offset, window.gatsby_scroll_duration);
     }
   }
 
@@ -50,7 +51,7 @@ export function handleStrippedLinkClick(to, e, onAnchorLinkClick) {
 
   if (isSamePage) {
     e.preventDefault();
-    return scroller(`#${anchor}`, window.gatsby_scroll_offset);
+    return scroller(`#${anchor}`, window.gatsby_scroll_offset, window.gatsby_scroll_duration);
   }
 
   if (isDifferentPage) {
