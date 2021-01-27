@@ -3,5 +3,7 @@
 /src
 /.babelrc
 /.eslintrc
+/.prettierrc
 /.github
+/.vscode
 /yarn.lock

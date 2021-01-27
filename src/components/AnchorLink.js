@@ -1,12 +1,22 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from 'react';
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import {
   handleLinkClick,
   stripHashedLocation,
-  handleStrippedLinkClick
-} from "../utils";
-import { anchorLinkTypes } from "../types";
+  handleStrippedLinkClick,
+} from '../utils';
+
+AnchorLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  className: PropTypes.string,
+  stripHash: PropTypes.bool,
+  gatsbyLinkProps: PropTypes.object,
+  onAnchorLinkClick: PropTypes.func,
+  children: PropTypes.node,
+};
 
 export function AnchorLink({
   to,
@@ -15,7 +25,7 @@ export function AnchorLink({
   className,
   stripHash = false,
   gatsbyLinkProps = {},
-  onAnchorLinkClick
+  onAnchorLinkClick,
 }) {
   const onClickHandler = stripHash ? handleStrippedLinkClick : handleLinkClick;
   const linkProps = {
@@ -24,7 +34,7 @@ export function AnchorLink({
      * Spread optional gatsbyLinkProps object in fist, so our specific props will override
      */
     to: stripHash ? stripHashedLocation(to) : to,
-    onClick: e => onClickHandler(to, e, onAnchorLinkClick)
+    onClick: (e) => onClickHandler(to, e, onAnchorLinkClick),
   };
 
   /**
@@ -33,7 +43,5 @@ export function AnchorLink({
   if (title) linkProps.title = title;
   if (className) linkProps.className = className;
 
-  return <Link {...linkProps}>{Boolean(children) ? children : title}</Link>;
+  return <Link {...linkProps}>{children ? children : title}</Link>;
 }
-
-AnchorLink.propTypes = anchorLinkTypes;

@@ -22,8 +22,7 @@
     ],
     "plugins": [
         "prettier",
-        "jsx-a11y",
-        "better-styled-components"
+        "jsx-a11y"
     ],
     "settings": {
         "react": {

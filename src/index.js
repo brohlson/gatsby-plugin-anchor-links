@@ -1,1 +1,1 @@
-export { AnchorLink } from "./components/AnchorLink";
+export { AnchorLink } from './components/AnchorLink';
