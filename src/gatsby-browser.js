@@ -1,6 +1,9 @@
-import { checkHash, isBrowser, scroller } from "./utils";
+import { checkHash, isBrowser, scroller } from './utils';
 
-export const onRouteUpdate = ({ location }, { offset = 0, duration = 1000 }) => {
+export const onRouteUpdate = (
+  { location },
+  { offset = 0, duration = 1000 }
+) => {
   let windowHash;
 
   if (isBrowser) {
@@ -9,9 +12,7 @@ export const onRouteUpdate = ({ location }, { offset = 0, duration = 1000 }) => 
     windowHash = window.gatsby_scroll_hash;
   }
 
-  Boolean(windowHash)
-    ? scroller(windowHash, offset)
-    : checkHash(location, offset);
+  windowHash ? scroller(windowHash, offset) : checkHash(location, offset);
 
   if (isBrowser && windowHash) {
     window.gatsby_scroll_hash = undefined;

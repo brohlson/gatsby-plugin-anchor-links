@@ -1,15 +1,20 @@
-import scrollToElement from "scroll-to-element";
-import { withPrefix } from "gatsby";
-import * as errorTypes from "./errors";
+/* eslint-disable no-console */
+import scrollToElement from 'scroll-to-element';
+import { withPrefix } from 'gatsby';
+import * as errorTypes from './errors';
 
-export const isBrowser = typeof window !== "undefined";
+export const isBrowser = typeof window !== 'undefined';
 
-export const isDevelopment = process.env.NODE_ENV !== "production";
+export const isDevelopment = process.env.NODE_ENV !== 'production';
+
+export function logWarning(message) {
+  if (isDevelopment) console.warn(message);
+}
 
 export function scroller(target, offset = 0, duration = 1000) {
   scrollToElement(target, {
     duration,
-    offset
+    offset,
   });
 }
 
@@ -17,30 +22,32 @@ export function handleLinkClick(to, e, onAnchorLinkClick) {
   /**
    * Log warnings on click
    */
-  const improperFormatting = !to.includes("/") || !to.includes("#");
-  if (improperFormatting && isDevelopment)
-    console.warn(errorTypes.IMPROPPER_FORMATTING);
+  const improperFormatting = !to.includes('/') || !to.includes('#');
+  if (improperFormatting) logWarning(errorTypes.IMPROPPER_FORMATTING);
 
-  if (isBrowser && to.includes("#")) {
-    const [anchorPath, anchor] = to.split("#");
+  if (isBrowser && to.includes('#')) {
+    const [anchorPath, anchor] = to.split('#');
     if (window.location.pathname === withPrefix(anchorPath)) {
       e.preventDefault();
-      scroller(`#${anchor}`, window.gatsby_scroll_offset, window.gatsby_scroll_duration);
+      scroller(
+        `#${anchor}`,
+        window.gatsby_scroll_offset,
+        window.gatsby_scroll_duration
+      );
     }
   }
 
-  if (onAnchorLinkClick) onAnchorLinkClick()
+  if (onAnchorLinkClick) onAnchorLinkClick();
 }
 
 export function handleStrippedLinkClick(to, e, onAnchorLinkClick) {
   /**
    * Log warnings on click
    */
-  const improperFormatting = !to.includes("/") || !to.includes("#");
-  if (improperFormatting && isDevelopment)
-    console.warn(errorTypes.IMPROPPER_FORMATTING);
+  const improperFormatting = !to.includes('/') || !to.includes('#');
+  if (improperFormatting) logWarning(errorTypes.IMPROPPER_FORMATTING);
 
-  const [anchorPath, anchor] = to.split("#");
+  const [anchorPath, anchor] = to.split('#');
 
   /**
    * Determine location, run scroller or set window variable
@@ -51,7 +58,11 @@ export function handleStrippedLinkClick(to, e, onAnchorLinkClick) {
 
   if (isSamePage) {
     e.preventDefault();
-    return scroller(`#${anchor}`, window.gatsby_scroll_offset, window.gatsby_scroll_duration);
+    scroller(
+      `#${anchor}`,
+      window.gatsby_scroll_offset,
+      window.gatsby_scroll_duration
+    );
   }
 
   if (isDifferentPage) {
@@ -62,7 +73,7 @@ export function handleStrippedLinkClick(to, e, onAnchorLinkClick) {
 }
 
 export function stripHashedLocation(to) {
-  return to.split("#")[0];
+  return to.split('#')[0];
 }
 
 export function checkHash(location, offset) {
@@ -71,5 +82,5 @@ export function checkHash(location, offset) {
     validElement = selector ? document.getElementById(selector) : null;
   if (hash && Boolean(validElement)) scroller(hash, offset);
   else if (hash && selector && !validElement)
-    console.warn(errorTypes.INVALID_HASH);
+    logWarning(errorTypes.INVALID_HASH);
 }
