@@ -5,6 +5,10 @@
   "author": "Chase Ohlson <chase@chaseohlson.com>",
   "description": "Gatsby plugin for using anchor links with a Gatsby Link component.",
   "homepage": "https://github.com/brohlson/gatsby-plugin-anchor-links",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brohlson/gatsby-plugin-anchor-links.git"
+  },
   "license": "MIT",
   "scripts": {
     "build": "babel src/ --out-dir . --ignore __tests__",
@@ -39,6 +43,9 @@
   ],
   "dependencies": {
     "scroll-to-element": "^2.0.3"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.0.0 || ^3.0.0"
   },
   "husky": {
     "hooks": {
